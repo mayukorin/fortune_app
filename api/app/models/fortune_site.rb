@@ -1,3 +1,4 @@
 class FortuneSite < ApplicationRecord
-    has_many :fortune
+    has_many :fortunes
 end
+

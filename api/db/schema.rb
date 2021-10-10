@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_144159) do
+ActiveRecord::Schema.define(version: 2021_10_10_085744) do
 
   create_table "fortune_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "web_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "fortunes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_10_09_144159) do
     t.bigint "fortune_site_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["fortune_site_id", "sign_id", "day"], name: "index_fortunes_on_fortune_site_id_and_sign_id_and_day", unique: true
     t.index ["fortune_site_id"], name: "index_fortunes_on_fortune_site_id"
     t.index ["sign_id"], name: "index_fortunes_on_sign_id"
   end
